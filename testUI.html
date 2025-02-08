@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 16 Lock Screen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen w-screen flex items-center justify-center bg-black">
+    <div class="relative w-full h-full flex items-center justify-center bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1080x1920');">
+        <!-- Blur overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-lg"></div>
+        
+        <!-- Lock screen content -->
+        <div class="relative flex flex-col items-center text-white text-center">
+            <!-- Clock -->
+            <div class="text-6xl font-light" id="clock"></div>
+            <div class="text-lg mt-1 opacity-80" id="date"></div>
+            
+            <!-- Unlock indicator -->
+            <div class="absolute bottom-10 flex flex-col items-center">
+                <div class="w-6 h-1 bg-white rounded-full mb-2 opacity-80 animate-pulse"></div>
+                <p class="text-sm opacity-80">Swipe up to unlock</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('date').textContent = now.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html
